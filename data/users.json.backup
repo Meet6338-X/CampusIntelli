@@ -1,0 +1,42 @@
+[
+  {
+    "id": "50249985-2ba6-42ce-b461-0742ddbb45f9",
+    "email": "student@campus.edu",
+    "password_hash": "$2b$12$Oy3fmtF5CCkJOltqBQ9L6eTv3YUpQxbvtQs/MIE2BhKogEGSqIvV2",
+    "name": "Meet Shah",
+    "role": "student",
+    "department": "Computer Science",
+    "created_at": "2026-01-31T11:49:04.839120",
+    "last_login": "2026-01-31T11:51:13.607553",
+    "student_id": "STU50249985",
+    "semester": 1,
+    "enrolled_courses": []
+  },
+  {
+    "id": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "email": "faculty@campus.edu",
+    "password_hash": "$2b$12$3Cliw8eeWpvy/ffJOFq8Uu1dkblHNtVj7Pj0Ol0kf4DKy.QRd2.eO",
+    "name": "Dr. Sarah Faculty",
+    "role": "faculty",
+    "department": "Computer Science",
+    "created_at": "2026-01-31T11:49:05.170641",
+    "last_login": "2026-01-31T11:52:37.604941",
+    "faculty_id": "FAC87549964",
+    "designation": "",
+    "assigned_courses": []
+  },
+  {
+    "id": "27da59f7-65f6-40c7-8b79-088a95fb267b",
+    "email": "admin@campus.edu",
+    "password_hash": "$2b$12$NnMvVwPc2yTdBDs0CmL6W.gU9p115LlHnFfM1gQKHWuaVoC2Dw3kS",
+    "name": "System Admin",
+    "role": "admin",
+    "department": "IT",
+    "created_at": "2026-01-31T11:49:05.501264",
+    "last_login": null,
+    "admin_id": "ADM27DA59F7",
+    "permissions": [
+      "all"
+    ]
+  }
+]

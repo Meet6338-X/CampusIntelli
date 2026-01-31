@@ -1,0 +1,24 @@
+[
+    {
+        "id": "ann-welcome",
+        "title": "Welcome to CampusIntelli!",
+        "content": "We're excited to launch our new unified campus portal. Explore all features including course management, attendance tracking, room bookings, and more!",
+        "author_id": "system",
+        "author_name": "System Admin",
+        "category": "general",
+        "target_audience": "all",
+        "is_pinned": true,
+        "published_at": "2026-01-31T00:00:00"
+    },
+    {
+        "id": "ann-semester",
+        "title": "Spring 2026 Semester Begins",
+        "content": "The Spring 2026 semester officially begins on February 3rd. Please ensure you have enrolled in all required courses and checked your timetable.",
+        "author_id": "system",
+        "author_name": "Academic Office",
+        "category": "academic",
+        "target_audience": "all",
+        "is_pinned": false,
+        "published_at": "2026-01-30T00:00:00"
+    }
+]

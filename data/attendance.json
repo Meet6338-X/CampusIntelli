@@ -1,0 +1,12 @@
+[
+  {
+    "id": "9a3e02ee-384a-4500-9170-a37ce94b29d3",
+    "course_id": "course-cs201",
+    "student_id": "50249985-2ba6-42ce-b461-0742ddbb45f9",
+    "date": "2026-01-31",
+    "lecture_id": "b1fea847-2ada-4dda-919c-df7b7c58e91d",
+    "is_present": true,
+    "marked_at": "2026-01-31T11:53:55.178671",
+    "marked_via": "qr"
+  }
+]

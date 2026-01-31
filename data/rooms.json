@@ -1,0 +1,59 @@
+[
+    {
+        "id": "room-101",
+        "name": "Room 101",
+        "building": "Main Building",
+        "floor": 1,
+        "capacity": 40,
+        "room_type": "classroom",
+        "equipment": [
+            "projector",
+            "whiteboard",
+            "ac"
+        ],
+        "is_available": true
+    },
+    {
+        "id": "room-102",
+        "name": "Computer Lab A",
+        "building": "Tech Block",
+        "floor": 1,
+        "capacity": 30,
+        "room_type": "lab",
+        "equipment": [
+            "computers",
+            "projector",
+            "ac"
+        ],
+        "is_available": true
+    },
+    {
+        "id": "room-201",
+        "name": "Conference Room",
+        "building": "Admin Block",
+        "floor": 2,
+        "capacity": 20,
+        "room_type": "conference",
+        "equipment": [
+            "projector",
+            "video_conferencing",
+            "ac"
+        ],
+        "is_available": true
+    },
+    {
+        "id": "room-301",
+        "name": "Auditorium",
+        "building": "Main Building",
+        "floor": 3,
+        "capacity": 200,
+        "room_type": "auditorium",
+        "equipment": [
+            "sound_system",
+            "projector",
+            "stage",
+            "ac"
+        ],
+        "is_available": true
+    }
+]
