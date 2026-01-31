@@ -60,13 +60,31 @@ class Student(User):
 
 
 class Faculty(User):
-    """Faculty user."""
+    """Faculty user with extended profile data."""
     
-    def __init__(self, faculty_id="", designation="", assigned_courses=None, **kwargs):
+    def __init__(
+        self, 
+        faculty_id="", 
+        designation="Assistant Professor",
+        qualification="",
+        specialization="",
+        experience_years=0,
+        phone="",
+        office="",
+        office_hours="",
+        assigned_courses=None, 
+        **kwargs
+    ):
         kwargs.pop('role', None)
         super().__init__(role='faculty', **kwargs)
         self.faculty_id = faculty_id or f"FAC{self.id[:8].upper()}"
         self.designation = designation
+        self.qualification = qualification
+        self.specialization = specialization
+        self.experience_years = experience_years
+        self.phone = phone
+        self.office = office
+        self.office_hours = office_hours
         self.assigned_courses = assigned_courses or []
     
     def to_dict(self):
@@ -74,6 +92,12 @@ class Faculty(User):
         data.update({
             'faculty_id': self.faculty_id,
             'designation': self.designation,
+            'qualification': self.qualification,
+            'specialization': self.specialization,
+            'experience_years': self.experience_years,
+            'phone': self.phone,
+            'office': self.office,
+            'office_hours': self.office_hours,
             'assigned_courses': self.assigned_courses
         })
         return data

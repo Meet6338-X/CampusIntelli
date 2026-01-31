@@ -18,6 +18,10 @@ from routes.assignment_routes import assignment_bp
 from routes.booking_routes import booking_bp
 from routes.attendance_routes import attendance_bp
 from routes.announcement_routes import announcement_bp
+from routes.materials_routes import materials_bp
+from routes.analytics_routes import analytics_bp
+from routes.admin_routes import admin_bp
+from routes.calendar_routes import calendar_bp
 from services.auth_service import init_sample_data
 
 # Initialize Flask app
@@ -32,6 +36,8 @@ app.config['UPLOAD_DIR'] = os.path.join(os.path.dirname(__file__), '..', 'upload
 # Ensure directories exist
 os.makedirs(app.config['DATA_DIR'], exist_ok=True)
 os.makedirs(app.config['UPLOAD_DIR'], exist_ok=True)
+os.makedirs(os.path.join(app.config['UPLOAD_DIR'], 'submissions'), exist_ok=True)
+os.makedirs(os.path.join(app.config['UPLOAD_DIR'], 'materials'), exist_ok=True)
 
 # Register blueprints
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
@@ -41,6 +47,10 @@ app.register_blueprint(assignment_bp, url_prefix='/api/assignments')
 app.register_blueprint(booking_bp, url_prefix='/api/bookings')
 app.register_blueprint(attendance_bp, url_prefix='/api/attendance')
 app.register_blueprint(announcement_bp, url_prefix='/api/announcements')
+app.register_blueprint(materials_bp, url_prefix='/api/materials')
+app.register_blueprint(analytics_bp, url_prefix='/api/analytics')
+app.register_blueprint(admin_bp, url_prefix='/api/admin')
+app.register_blueprint(calendar_bp, url_prefix='/api/calendar')
 
 # Serve frontend
 @app.route('/')

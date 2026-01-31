@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampusIntelli - Smart Campus Portal</title>
-    <meta name="description" content="Unified digital hub for students and faculty - courses, attendance, bookings, and more">
+    <meta name="description"
+        content="Unified digital hub for students and faculty - courses, attendance, exams, fees, and more">
+    <meta name="theme-color" content="#020617">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10v6M2 10l10-5 10 5-10 5z'/%3E%3Cpath d='M6 12v5c3 3 9 3 12 0v-5'/%3E%3C/svg%3E">
 </head>
+
 <body>
     <div id="app">
         <!-- Auth Screen -->
         <div id="auth-screen" class="screen active">
             <div class="auth-container">
                 <div class="auth-header">
-                    <div class="logo">🎓</div>
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
                     <h1>CampusIntelli</h1>
                     <p>Smart Campus Portal</p>
                 </div>
-                
+
                 <div class="auth-tabs">
                     <button class="tab-btn active" data-tab="login">Login</button>
                     <button class="tab-btn" data-tab="register">Register</button>
                 </div>
-                
+
                 <form id="login-form" class="auth-form active">
                     <div class="form-group">
                         <label for="login-email">Email</label>
-                        <input type="email" id="login-email" required placeholder="your.email@campus.edu">
+                        <input type="email" id="login-email" required placeholder="your.email@campus.edu"
+                            autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="login-password">Password</label>
-                        <input type="password" id="login-password" required placeholder="Enter password">
+                        <input type="password" id="login-password" required placeholder="Enter password"
+                            autocomplete="current-password">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
                         <span>Login</span>
                         <span class="loader hidden"></span>
                     </button>
                 </form>
-                
+
                 <form id="register-form" class="auth-form">
                     <div class="form-group">
                         <label for="reg-name">Full Name</label>
-                        <input type="text" id="reg-name" required placeholder="John Doe">
+                        <input type="text" id="reg-name" required placeholder="John Doe" autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="reg-email">Email</label>
-                        <input type="email" id="reg-email" required placeholder="your.email@campus.edu">
+                        <input type="email" id="reg-email" required placeholder="your.email@campus.edu"
+                            autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="reg-password">Password</label>
-                        <input type="password" id="reg-password" required minlength="6" placeholder="Min 6 characters">
+                        <input type="password" id="reg-password" required minlength="6" placeholder="Min 6 characters"
+                            autocomplete="new-password">
                     </div>
                     <div class="form-group">
                         <label for="reg-role">Role</label>
@@ -71,157 +85,553 @@
                         <span class="loader hidden"></span>
                     </button>
                 </form>
-                
+
                 <div class="demo-accounts">
-                    <p>Demo Accounts:</p>
+                    <p>Demo Accounts</p>
                     <small>student@campus.edu / student123</small><br>
                     <small>faculty@campus.edu / faculty123</small><br>
                     <small>admin@campus.edu / admin123</small>
                 </div>
             </div>
         </div>
-        
+
         <!-- Main App -->
         <div id="main-app" class="screen">
             <!-- Sidebar -->
-            <nav class="sidebar">
+            <nav class="sidebar" role="navigation" aria-label="Main navigation">
                 <div class="sidebar-header">
-                    <div class="logo">🎓</div>
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
                     <h2>CampusIntelli</h2>
                 </div>
-                
+
                 <div class="nav-links">
+                    <!-- Main Navigation -->
                     <a href="#" class="nav-link active" data-page="dashboard">
-                        <span class="icon">📊</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="9" rx="1" />
+                                <rect x="14" y="3" width="7" height="5" rx="1" />
+                                <rect x="14" y="12" width="7" height="9" rx="1" />
+                                <rect x="3" y="16" width="7" height="5" rx="1" />
+                            </svg></span>
                         <span>Dashboard</span>
                     </a>
+                    <a href="#" class="nav-link" data-page="academics">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                            </svg></span>
+                        <span>Academics</span>
+                    </a>
                     <a href="#" class="nav-link" data-page="courses">
-                        <span class="icon">📚</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                            </svg></span>
                         <span>Courses</span>
                     </a>
                     <a href="#" class="nav-link" data-page="assignments">
-                        <span class="icon">📝</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" />
+                                <path d="M15 3v4a2 2 0 0 0 2 2h4" />
+                                <path d="M9 13h6" />
+                                <path d="M9 17h3" />
+                            </svg></span>
                         <span>Assignments</span>
                     </a>
                     <a href="#" class="nav-link" data-page="attendance">
-                        <span class="icon">✅</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg></span>
                         <span>Attendance</span>
                     </a>
+                    <a href="#" class="nav-link" data-page="examinations">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 2v4" />
+                                <path d="M16 2v4" />
+                                <rect width="18" height="18" x="3" y="4" rx="2" />
+                                <path d="M3 10h18" />
+                                <path d="m9 16 2 2 4-4" />
+                            </svg></span>
+                        <span>Examinations</span>
+                    </a>
+                    <a href="#" class="nav-link" data-page="timetable">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg></span>
+                        <span>Timetable</span>
+                    </a>
+                    <a href="#" class="nav-link" data-page="fees">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="14" x="2" y="5" rx="2" />
+                                <line x1="2" x2="22" y1="10" y2="10" />
+                            </svg></span>
+                        <span>Fees & Accounts</span>
+                    </a>
                     <a href="#" class="nav-link" data-page="bookings">
-                        <span class="icon">🏠</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                                <path
+                                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            </svg></span>
                         <span>Bookings</span>
                     </a>
+                    <a href="#" class="nav-link" data-page="library">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                                <path d="m9 10 2 2 4-4" />
+                            </svg></span>
+                        <span>Library</span>
+                    </a>
+                    <a href="#" class="nav-link" data-page="events">
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 2v4" />
+                                <path d="M16 2v4" />
+                                <rect width="18" height="18" x="3" y="4" rx="2" />
+                                <path d="M3 10h18" />
+                                <path d="M8 14h.01" />
+                                <path d="M12 14h.01" />
+                                <path d="M16 14h.01" />
+                                <path d="M8 18h.01" />
+                                <path d="M12 18h.01" />
+                                <path d="M16 18h.01" />
+                            </svg></span>
+                        <span>Events</span>
+                    </a>
                     <a href="#" class="nav-link" data-page="announcements">
-                        <span class="icon">📢</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m3 11 18-5v12L3 14v-3z" />
+                                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                            </svg></span>
                         <span>Announcements</span>
                     </a>
                     <a href="#" class="nav-link" data-page="profile">
-                        <span class="icon">👤</span>
+                        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="5" />
+                                <path d="M20 21a8 8 0 0 0-16 0" />
+                            </svg></span>
                         <span>Profile</span>
                     </a>
                 </div>
-                
+
                 <div class="sidebar-footer">
                     <div class="user-info">
                         <span id="user-name">User</span>
                         <span id="user-role" class="badge">Role</span>
                     </div>
-                    <button id="logout-btn" class="btn btn-ghost">Logout</button>
+                    <button id="logout-btn" class="btn btn-ghost btn-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+                        Logout
+                    </button>
                 </div>
             </nav>
-            
+
             <!-- Main Content -->
-            <main class="main-content">
-                <!-- Dashboard Page -->
+            <main class="main-content" role="main">
+
+                <!-- ==================== DASHBOARD PAGE ==================== -->
                 <div id="page-dashboard" class="page active">
                     <header class="page-header">
-                        <h1>Dashboard</h1>
-                        <p class="greeting">Welcome back!</p>
+                        <div>
+                            <h1>Dashboard</h1>
+                            <p class="greeting">Welcome back, <span id="greeting-name">Student</span>!</p>
+                        </div>
+                        <div class="current-date" id="current-date">Loading date...</div>
                     </header>
-                    
+
+                    <!-- Stats Grid -->
                     <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-icon">📚</span>
+                        <div class="stat-card" tabindex="0" data-nav="courses">
+                            <span class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                                </svg>
+                            </span>
                             <div class="stat-info">
                                 <span class="stat-value" id="stat-courses">0</span>
-                                <span class="stat-label">Courses</span>
+                                <span class="stat-label">Enrolled Courses</span>
+                                <span class="stat-subtitle">This Semester</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-icon">📝</span>
+                        <div class="stat-card" tabindex="0" data-nav="assignments">
+                            <span class="stat-icon blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" />
+                                    <path d="M15 3v4a2 2 0 0 0 2 2h4" />
+                                    <path d="M9 13h6" />
+                                    <path d="M9 17h3" />
+                                </svg>
+                            </span>
                             <div class="stat-info">
                                 <span class="stat-value" id="stat-assignments">0</span>
-                                <span class="stat-label">Pending</span>
+                                <span class="stat-label">Pending Assignments</span>
+                                <span class="stat-subtitle">Due this week</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-icon">✅</span>
+                        <div class="stat-card" tabindex="0" data-nav="attendance">
+                            <span class="stat-icon amber">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </span>
                             <div class="stat-info">
                                 <span class="stat-value" id="stat-attendance">0%</span>
-                                <span class="stat-label">Attendance</span>
+                                <span class="stat-label">Attendance Rate</span>
+                                <span class="stat-subtitle">Overall Average</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-icon">🏠</span>
+                        <div class="stat-card" tabindex="0" data-nav="examinations">
+                            <span class="stat-icon rose">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M8 2v4" />
+                                    <path d="M16 2v4" />
+                                    <rect width="18" height="18" x="3" y="4" rx="2" />
+                                    <path d="M3 10h18" />
+                                    <path d="m9 16 2 2 4-4" />
+                                </svg>
+                            </span>
                             <div class="stat-info">
-                                <span class="stat-value" id="stat-bookings">0</span>
-                                <span class="stat-label">Bookings</span>
+                                <span class="stat-value" id="stat-exams">0</span>
+                                <span class="stat-label">Upcoming Exams</span>
+                                <span class="stat-subtitle">Next 30 days</span>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Quick Access Modules -->
+                    <section class="mb-8">
+                        <h2 class="mb-6" style="font-size: 1.25rem; color: var(--text-secondary);">Quick Access</h2>
+                        <div class="modules-grid">
+                            <a href="#" class="module-card" data-page="academics">
+                                <span class="module-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                    </svg></span>
+                                <span class="module-title">Academics</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="fees">
+                                <span class="module-icon blue"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="14" x="2" y="5" rx="2" />
+                                        <line x1="2" x2="22" y1="10" y2="10" />
+                                    </svg></span>
+                                <span class="module-title">Fees & Accounts</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="examinations">
+                                <span class="module-icon amber"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M8 2v4" />
+                                        <path d="M16 2v4" />
+                                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                                        <path d="M3 10h18" />
+                                        <path d="m9 16 2 2 4-4" />
+                                    </svg></span>
+                                <span class="module-title">Examination</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="assignments">
+                                <span class="module-icon rose"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" />
+                                        <path d="M15 3v4a2 2 0 0 0 2 2h4" />
+                                        <path d="M9 13h6" />
+                                        <path d="M9 17h3" />
+                                    </svg></span>
+                                <span class="module-title">Assignments</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="events">
+                                <span class="module-icon cyan"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M8 2v4" />
+                                        <path d="M16 2v4" />
+                                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                                        <path d="M3 10h18" />
+                                    </svg></span>
+                                <span class="module-title">Events</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="library">
+                                <span class="module-icon indigo"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                                        <path d="m9 10 2 2 4-4" />
+                                    </svg></span>
+                                <span class="module-title">Library</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="timetable">
+                                <span class="module-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg></span>
+                                <span class="module-title">My Timetable</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="attendance">
+                                <span class="module-icon blue"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                        <polyline points="22 4 12 14.01 9 11.01" />
+                                    </svg></span>
+                                <span class="module-title">Attendance</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="quiz">
+                                <span class="module-icon amber"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                        <path d="M12 17h.01" />
+                                    </svg></span>
+                                <span class="module-title">Quiz</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="feedback">
+                                <span class="module-icon rose"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    </svg></span>
+                                <span class="module-title">Feedback</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="grievance">
+                                <span class="module-icon cyan"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                        <path d="M12 9v4" />
+                                        <path d="M12 17h.01" />
+                                    </svg></span>
+                                <span class="module-title">Grievance</span>
+                            </a>
+                            <a href="#" class="module-card" data-page="tpo">
+                                <span class="module-icon indigo"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                    </svg></span>
+                                <span class="module-title">TPO / Placement</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Dashboard Grid -->
                     <div class="dashboard-grid">
                         <section class="card">
-                            <h3>Today's Schedule</h3>
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="20" height="20">
+                                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                                    <line x1="16" x2="16" y1="2" y2="6" />
+                                    <line x1="8" x2="8" y1="2" y2="6" />
+                                    <line x1="3" x2="21" y1="10" y2="10" />
+                                </svg>
+                                Today's Schedule
+                            </h3>
                             <div id="today-schedule" class="schedule-list">
                                 <p class="empty-state">No classes today</p>
                             </div>
                         </section>
-                        
+
                         <section class="card">
-                            <h3>Upcoming Assignments</h3>
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="20" height="20">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                Upcoming Deadlines
+                            </h3>
                             <div id="upcoming-assignments" class="list">
-                                <p class="empty-state">No upcoming assignments</p>
+                                <p class="empty-state">No upcoming deadlines</p>
                             </div>
                         </section>
-                        
+
                         <section class="card">
-                            <h3>Recent Announcements</h3>
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="20" height="20">
+                                    <path d="m3 11 18-5v12L3 14v-3z" />
+                                    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                                </svg>
+                                Recent Announcements
+                            </h3>
                             <div id="recent-announcements" class="list">
                                 <p class="empty-state">No announcements</p>
                             </div>
                         </section>
                     </div>
                 </div>
-                
-                <!-- Courses Page -->
+
+                <!-- ==================== ACADEMICS PAGE ==================== -->
+                <div id="page-academics" class="page">
+                    <header class="page-header">
+                        <h1>Academics</h1>
+                        <span class="current-date" id="academic-year">2025-26</span>
+                    </header>
+
+                    <div class="stats-grid mb-8">
+                        <div class="stat-card">
+                            <span class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="m16 12-4-4-4 4" />
+                                    <path d="M12 16V8" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">8.5</span>
+                                <span class="stat-label">Current CGPA</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-icon blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Semester</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-icon amber"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10" />
+                                    <path d="M18 20V4" />
+                                    <path d="M6 20v-4" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">120</span>
+                                <span class="stat-label">Credits Earned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Semester Results</h3>
+                        <p class="empty-state">Results will appear here once published</p>
+                    </div>
+                </div>
+
+                <!-- ==================== COURSES PAGE ==================== -->
                 <div id="page-courses" class="page">
                     <header class="page-header">
                         <h1>Courses</h1>
-                        <button id="add-course-btn" class="btn btn-primary faculty-only admin-only hidden">+ Add Course</button>
+                        <button id="add-course-btn" class="btn btn-primary faculty-only admin-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Add Course
+                        </button>
                     </header>
                     <div id="courses-list" class="courses-grid">
                         <p class="empty-state">Loading courses...</p>
                     </div>
                 </div>
-                
-                <!-- Assignments Page -->
+
+                <!-- ==================== ASSIGNMENTS PAGE ==================== -->
                 <div id="page-assignments" class="page">
                     <header class="page-header">
                         <h1>Assignments</h1>
-                        <button id="add-assignment-btn" class="btn btn-primary faculty-only hidden">+ New Assignment</button>
+                        <button id="add-assignment-btn" class="btn btn-primary faculty-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            New Assignment
+                        </button>
                     </header>
                     <div id="assignments-list" class="assignments-grid">
                         <p class="empty-state">Loading assignments...</p>
                     </div>
                 </div>
-                
-                <!-- Attendance Page -->
+
+                <!-- ==================== ATTENDANCE PAGE ==================== -->
                 <div id="page-attendance" class="page">
                     <header class="page-header">
                         <h1>Attendance</h1>
-                        <button id="generate-qr-btn" class="btn btn-primary faculty-only hidden">Generate QR</button>
-                        <button id="scan-qr-btn" class="btn btn-primary student-only hidden">Scan QR</button>
+                        <div style="display: flex; gap: 12px;">
+                            <button id="generate-qr-btn" class="btn btn-primary faculty-only hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="18" height="18">
+                                    <rect width="5" height="5" x="3" y="3" rx="1" />
+                                    <rect width="5" height="5" x="16" y="3" rx="1" />
+                                    <rect width="5" height="5" x="3" y="16" rx="1" />
+                                    <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+                                    <path d="M21 21v.01" />
+                                    <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+                                    <path d="M3 12h.01" />
+                                    <path d="M12 3h.01" />
+                                    <path d="M12 16v.01" />
+                                    <path d="M16 12h1" />
+                                    <path d="M21 12v.01" />
+                                    <path d="M12 21v-1" />
+                                </svg>
+                                Generate QR
+                            </button>
+                            <button id="scan-qr-btn" class="btn btn-primary student-only hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="18" height="18">
+                                    <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                                    <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                                    <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                                    <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                                    <line x1="7" x2="17" y1="12" y2="12" />
+                                </svg>
+                                Mark Attendance
+                            </button>
+                        </div>
                     </header>
                     <div class="attendance-content">
                         <div id="qr-display" class="qr-container hidden"></div>
@@ -230,15 +640,126 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Bookings Page -->
+
+                <!-- ==================== EXAMINATIONS PAGE ==================== -->
+                <div id="page-examinations" class="page">
+                    <header class="page-header">
+                        <h1>Examinations</h1>
+                        <button id="add-exam-btn" class="btn btn-primary faculty-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Schedule Exam
+                        </button>
+                    </header>
+                    <div class="card mb-6">
+                        <h3>Upcoming Examinations</h3>
+                        <div id="upcoming-exams" class="list">
+                            <p class="empty-state">No upcoming examinations</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Results</h3>
+                        <div id="exam-results" class="list">
+                            <p class="empty-state">No results published</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== TIMETABLE PAGE ==================== -->
+                <div id="page-timetable" class="page">
+                    <header class="page-header">
+                        <h1>My Timetable</h1>
+                        <div class="admin-actions" id="timetable-admin-actions" style="display: none;">
+                            <button id="add-timetable-slot-btn" class="btn btn-primary"
+                                onclick="AdminManager.showTimetableForm()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="18" height="18">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add Class Slot
+                            </button>
+                            <button id="bulk-timetable-btn" class="btn btn-secondary"
+                                onclick="AdminManager.showBulkTimetableForm()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" width="18" height="18">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <path d="M9 3v18" />
+                                    <path d="M3 9h18" />
+                                </svg>
+                                Bulk Edit
+                            </button>
+                        </div>
+                    </header>
+                    <div class="card">
+                        <h3>Weekly Schedule</h3>
+                        <div id="weekly-timetable">
+                            <p class="empty-state">Timetable not available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== FEES PAGE ==================== -->
+                <div id="page-fees" class="page">
+                    <header class="page-header">
+                        <h1>Fees & Accounts</h1>
+                    </header>
+                    <div class="stats-grid mb-8">
+                        <div class="stat-card">
+                            <span class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">₹0</span>
+                                <span class="stat-label">Total Paid</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-icon amber"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">₹0</span>
+                                <span class="stat-label">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Fee History</h3>
+                        <div id="fee-history">
+                            <p class="empty-state">No fee records</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== BOOKINGS PAGE ==================== -->
                 <div id="page-bookings" class="page">
                     <header class="page-header">
                         <h1>Room Bookings</h1>
-                        <button id="new-booking-btn" class="btn btn-primary">+ Book Room</button>
+                        <button id="new-booking-btn" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Book Room
+                        </button>
                     </header>
                     <div id="bookings-content">
-                        <section class="card">
+                        <section class="card mb-6">
                             <h3>My Bookings</h3>
                             <div id="my-bookings" class="list"></div>
                         </section>
@@ -248,60 +769,277 @@
                         </section>
                     </div>
                 </div>
-                
-                <!-- Announcements Page -->
+
+                <!-- ==================== LIBRARY PAGE ==================== -->
+                <div id="page-library" class="page">
+                    <header class="page-header">
+                        <h1>Library</h1>
+                        <button class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                            Search Books
+                        </button>
+                    </header>
+                    <div class="stats-grid mb-8">
+                        <div class="stat-card">
+                            <span class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Books Borrowed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-icon amber"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Overdue</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Currently Borrowed</h3>
+                        <div id="borrowed-books">
+                            <p class="empty-state">No books borrowed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== EVENTS PAGE ==================== -->
+                <div id="page-events" class="page">
+                    <header class="page-header">
+                        <h1>Events</h1>
+                        <button id="add-event-btn" class="btn btn-primary faculty-only admin-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Add Event
+                        </button>
+                    </header>
+                    <div class="card mb-6">
+                        <h3>Upcoming Events</h3>
+                        <div id="upcoming-events" class="list">
+                            <p class="empty-state">No upcoming events</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== ANNOUNCEMENTS PAGE ==================== -->
                 <div id="page-announcements" class="page">
                     <header class="page-header">
                         <h1>Announcements</h1>
-                        <button id="new-announcement-btn" class="btn btn-primary faculty-only admin-only hidden">+ New</button>
+                        <button id="new-announcement-btn" class="btn btn-primary faculty-only admin-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            New
+                        </button>
                     </header>
                     <div id="announcements-list" class="announcements-grid">
                         <p class="empty-state">Loading announcements...</p>
                     </div>
                 </div>
-                
-                <!-- Profile Page -->
+
+                <!-- ==================== QUIZ PAGE ==================== -->
+                <div id="page-quiz" class="page">
+                    <header class="page-header">
+                        <h1>Quiz & Online Tests</h1>
+                        <button id="create-quiz-btn" class="btn btn-primary faculty-only hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Create Quiz
+                        </button>
+                    </header>
+                    <div class="card mb-6">
+                        <h3>Available Quizzes</h3>
+                        <div id="available-quizzes" class="list">
+                            <p class="empty-state">No quizzes available</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Completed Quizzes</h3>
+                        <div id="completed-quizzes" class="list">
+                            <p class="empty-state">No completed quizzes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== FEEDBACK PAGE ==================== -->
+                <div id="page-feedback" class="page">
+                    <header class="page-header">
+                        <h1>Feedback</h1>
+                    </header>
+                    <div class="card" style="max-width: 600px;">
+                        <h3>Submit Feedback</h3>
+                        <form id="feedback-form">
+                            <div class="form-group">
+                                <label for="feedback-category">Category</label>
+                                <select id="feedback-category">
+                                    <option value="course">Course</option>
+                                    <option value="faculty">Faculty</option>
+                                    <option value="facilities">Facilities</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-subject">Subject</label>
+                                <input type="text" id="feedback-subject" placeholder="Brief subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-message">Message</label>
+                                <textarea id="feedback-message" rows="5"
+                                    placeholder="Your detailed feedback..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ==================== GRIEVANCE PAGE ==================== -->
+                <div id="page-grievance" class="page">
+                    <header class="page-header">
+                        <h1>Grievance Portal</h1>
+                        <button id="new-grievance-btn" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                width="18" height="18">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            New Grievance
+                        </button>
+                    </header>
+                    <div class="card">
+                        <h3>My Grievances</h3>
+                        <div id="my-grievances" class="list">
+                            <p class="empty-state">No grievances submitted</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== TPO PAGE ==================== -->
+                <div id="page-tpo" class="page">
+                    <header class="page-header">
+                        <h1>Training & Placement</h1>
+                    </header>
+                    <div class="stats-grid mb-8">
+                        <div class="stat-card">
+                            <span class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Companies Visiting</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-icon blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg></span>
+                            <div class="stat-info">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Applications</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-6">
+                        <h3>Upcoming Placement Drives</h3>
+                        <div id="placement-drives" class="list">
+                            <p class="empty-state">No drives scheduled</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== PROFILE PAGE ==================== -->
                 <div id="page-profile" class="page">
                     <header class="page-header">
                         <h1>My Profile</h1>
                     </header>
                     <div class="profile-content">
                         <div class="card profile-card">
-                            <div class="profile-avatar">👤</div>
+                            <div class="profile-avatar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="5" />
+                                    <path d="M20 21a8 8 0 0 0-16 0" />
+                                </svg>
+                            </div>
                             <form id="profile-form">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label for="profile-name">Name</label>
                                     <input type="text" id="profile-name">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label for="profile-email">Email</label>
                                     <input type="email" id="profile-email" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <label>Department</label>
+                                    <label for="profile-dept">Department</label>
                                     <input type="text" id="profile-dept">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <div class="form-group">
+                                    <label for="profile-phone">Phone</label>
+                                    <input type="tel" id="profile-phone" placeholder="+91 XXXXX XXXXX">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" width="18" height="18">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                        <polyline points="17 21 17 13 7 13 7 21" />
+                                        <polyline points="7 3 7 8 15 8" />
+                                    </svg>
+                                    Save Changes
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
+
             </main>
         </div>
-        
+
         <!-- Modal -->
-        <div id="modal" class="modal hidden">
+        <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
             <div class="modal-content">
-                <button class="modal-close">&times;</button>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
                 <div id="modal-body"></div>
             </div>
         </div>
-        
+
         <!-- Toast -->
-        <div id="toast" class="toast hidden"></div>
+        <div id="toast" class="toast hidden" role="alert" aria-live="polite"></div>
     </div>
-    
+
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
