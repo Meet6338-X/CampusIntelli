@@ -1,3 +1,12 @@
+Assignment No. 1
+Full Name: Meet Vidyut Shah
+DIV: SEDA
+Roll No.: 2
+PRN: 1252130002
+Subject: Software Engineering
+Date of Conduction: 30/1/2026
+Date of Submission: 30/1/2026
+
 # Experiment 1: Requirement Elicitation Techniques and SRS Preparation
 
 ## Objective
