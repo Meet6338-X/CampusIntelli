@@ -76,6 +76,14 @@ const App = {
         // Show/hide role-specific elements
         this.updateRoleUI();
 
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Update role UI for AdminManager
+        if (typeof AdminManager !== 'undefined') {
+            AdminManager.init(this.user);
+        }
+
         // Update date
         this.updateCurrentDate();
 
@@ -341,18 +349,27 @@ const App = {
                 upcoming.innerHTML = '<p class="empty-state">No upcoming deadlines</p>';
             }
 
-            // Today's schedule (mock data)
+            // Today's schedule from timetable API
             const schedule = document.getElementById('today-schedule');
-            schedule.innerHTML = `
-                <div class="list-item">
-                    <h4>Data Structures</h4>
-                    <p>Room: LH-101 | 09:00 - 10:30</p>
-                </div>
-                <div class="list-item">
-                    <h4>Database Management</h4>
-                    <p>Room: LH-203 | 11:00 - 12:30</p>
-                </div>
-            `;
+            try {
+                const today = new Date();
+                // Monday=0, Sunday=6 in our system; JS: 0=Sun, 1=Mon...
+                const dayOfWeek = today.getDay() === 0 ? 6 : today.getDay() - 1;
+                const ttData = await API.calendar.getTimetable({ day: dayOfWeek });
+                const todaySlots = (ttData.timetable || []).sort((a, b) => a.start_time.localeCompare(b.start_time));
+                if (todaySlots.length > 0) {
+                    schedule.innerHTML = todaySlots.map(s => `
+                        <div class="list-item">
+                            <h4>${s.course_code || ''} ${s.course_name}</h4>
+                            <p>Room: ${s.room || 'TBA'} | ${s.start_time} - ${s.end_time} <span class="badge" style="margin-left:8px;background:var(--surface-3);font-size:0.7rem">${s.slot_type}</span></p>
+                        </div>
+                    `).join('');
+                } else {
+                    schedule.innerHTML = '<p class="empty-state">No classes today</p>';
+                }
+            } catch (e) {
+                schedule.innerHTML = '<p class="empty-state">Unable to load schedule</p>';
+            }
 
             // Announcements
             const annData = await API.announcements.getAll();
@@ -712,19 +729,26 @@ const App = {
     // ===================
     async loadEvents() {
         const container = document.getElementById('upcoming-events');
-        // Mock data
-        container.innerHTML = `
-            <div class="list-item">
-                <h4>Tech Fest 2026</h4>
-                <p>Annual technology festival with hackathons, workshops, and competitions</p>
-                <span class="date">April 5-7, 2026</span>
-            </div>
-            <div class="list-item">
-                <h4>Career Fair</h4>
-                <p>Connect with top companies and explore job opportunities</p>
-                <span class="date">March 25, 2026</span>
-            </div>
-        `;
+        try {
+            const data = await API.calendar.getEvents({ include_past: false });
+            const events = data.events || [];
+            if (events.length > 0) {
+                container.innerHTML = events.map(e => `
+                    <div class="list-item">
+                        <h4>
+                            <span class="badge" style="margin-right:8px;background:var(--surface-3);font-size:0.7rem">${e.event_type}</span>
+                            ${e.title}
+                        </h4>
+                        <p>${e.description || ''}</p>
+                        <span class="date">${e.start_date}${e.end_date && e.end_date !== e.start_date ? ' - ' + e.end_date : ''}${e.location ? ' | ' + e.location : ''}</span>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p class="empty-state">No upcoming events</p>';
+            }
+        } catch (error) {
+            container.innerHTML = '<p class="empty-state">Failed to load events</p>';
+        }
     },
 
     // ===================
@@ -899,14 +923,40 @@ const App = {
     },
 
     async createCourse() {
-        this.showToast('Course created!', 'success');
-        this.closeModal();
-        this.loadCourses();
+        const code = document.getElementById('course-code').value.trim();
+        const name = document.getElementById('course-name').value.trim();
+        if (!code || !name) {
+            this.showToast('Course code and name are required', 'error');
+            return;
+        }
+        try {
+            await API.courses.create({
+                code,
+                name,
+                credits: parseInt(document.getElementById('course-credits').value) || 3,
+                description: document.getElementById('course-description').value
+            });
+            this.showToast('Course created!', 'success');
+            this.closeModal();
+            this.loadCourses();
+        } catch (error) {
+            this.showToast(error.message, 'error');
+        }
     },
 
-    showAssignmentForm() {
+    async showAssignmentForm() {
+        let courseOptions = '<option value="">Select Course</option>';
+        try {
+            const data = await API.courses.getAll();
+            courseOptions += (data.courses || []).map(c => `<option value="${c.id}">${c.code} - ${c.name}</option>`).join('');
+        } catch(e) {}
+
         const modalBody = `
             <h2>Create Assignment</h2>
+            <div class="form-group">
+                <label>Course</label>
+                <select id="assignment-course">${courseOptions}</select>
+            </div>
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" id="assignment-title" placeholder="Assignment title">
@@ -929,9 +979,30 @@ const App = {
     },
 
     async createAssignment() {
-        this.showToast('Assignment created!', 'success');
-        this.closeModal();
-        this.loadAssignments();
+        const title = document.getElementById('assignment-title').value.trim();
+        const courseId = document.getElementById('assignment-course')?.value;
+        if (!title) {
+            this.showToast('Assignment title is required', 'error');
+            return;
+        }
+        if (!courseId) {
+            this.showToast('Please select a course', 'error');
+            return;
+        }
+        try {
+            await API.assignments.create({
+                title,
+                course_id: courseId,
+                description: document.getElementById('assignment-desc').value,
+                due_date: document.getElementById('assignment-due').value,
+                max_marks: parseInt(document.getElementById('assignment-marks').value) || 100
+            });
+            this.showToast('Assignment created!', 'success');
+            this.closeModal();
+            this.loadAssignments();
+        } catch (error) {
+            this.showToast(error.message, 'error');
+        }
     },
 
     // Show QR generator (faculty)

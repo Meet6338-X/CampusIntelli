@@ -23,6 +23,7 @@ class StorageService:
         """Create empty data files if they don't exist."""
         files = [
             'users.json', 'courses.json', 'timetable.json',
+            'timetable_slots.json', 'events.json', 'academic_calendar.json',
             'assignments.json', 'submissions.json', 'grades.json',
             'rooms.json', 'bookings.json',
             'attendance.json', 'qrcodes.json',

@@ -1,46 +1,57 @@
 [
-    {
-        "id": "course-cs101",
-        "code": "CS101",
-        "name": "Introduction to Programming",
-        "description": "Learn the fundamentals of programming using Python. Covers variables, loops, functions, and basic data structures.",
-        "credits": 4,
-        "department": "Computer Science",
-        "instructor_id": "",
-        "students": [],
-        "created_at": "2026-01-01T00:00:00"
-    },
-    {
-        "id": "course-cs201",
-        "code": "CS201",
-        "name": "Data Structures & Algorithms",
-        "description": "Study of fundamental data structures including arrays, linked lists, trees, and graphs. Algorithm analysis and design.",
-        "credits": 4,
-        "department": "Computer Science",
-        "instructor_id": "",
-        "students": [],
-        "created_at": "2026-01-01T00:00:00"
-    },
-    {
-        "id": "course-cs301",
-        "code": "CS301",
-        "name": "Database Systems",
-        "description": "Relational database design, SQL, normalization, and modern database technologies.",
-        "credits": 3,
-        "department": "Computer Science",
-        "instructor_id": "",
-        "students": [],
-        "created_at": "2026-01-01T00:00:00"
-    },
-    {
-        "id": "course-cs401",
-        "code": "CS401",
-        "name": "Software Engineering",
-        "description": "Software development lifecycle, agile methodologies, testing, and project management.",
-        "credits": 3,
-        "department": "Computer Science",
-        "instructor_id": "",
-        "students": [],
-        "created_at": "2026-01-01T00:00:00"
-    }
+  {
+    "id": "course-cs101",
+    "code": "CS101",
+    "name": "Introduction to Programming",
+    "description": "Learn the fundamentals of programming using Python. Covers variables, loops, functions, and basic data structures.",
+    "credits": 4,
+    "department": "Computer Science",
+    "instructor_id": "",
+    "students": [],
+    "created_at": "2026-01-01T00:00:00"
+  },
+  {
+    "id": "course-cs201",
+    "code": "CS201",
+    "name": "Data Structures & Algorithms",
+    "description": "Study of fundamental data structures including arrays, linked lists, trees, and graphs. Algorithm analysis and design.",
+    "credits": 4,
+    "department": "Computer Science",
+    "instructor_id": "",
+    "students": [],
+    "created_at": "2026-01-01T00:00:00"
+  },
+  {
+    "id": "course-cs301",
+    "code": "CS301",
+    "name": "Database Systems",
+    "description": "Relational database design, SQL, normalization, and modern database technologies.",
+    "credits": 3,
+    "department": "Computer Science",
+    "instructor_id": "",
+    "students": [],
+    "created_at": "2026-01-01T00:00:00"
+  },
+  {
+    "id": "course-cs401",
+    "code": "CS401",
+    "name": "Software Engineering",
+    "description": "Software development lifecycle, agile methodologies, testing, and project management.",
+    "credits": 3,
+    "department": "Computer Science",
+    "instructor_id": "",
+    "students": [],
+    "created_at": "2026-01-01T00:00:00"
+  },
+  {
+    "id": "13212c5a-e6b9-4aaf-8816-2f4e80fcf0ec",
+    "code": "DP1759",
+    "name": "Data Structure",
+    "description": "Dsa for exam",
+    "credits": 3,
+    "department": "IT",
+    "instructor_id": "27da59f7-65f6-40c7-8b79-088a95fb267b",
+    "students": [],
+    "created_at": "2026-04-16T00:50:47.486848"
+  }
 ]

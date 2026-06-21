@@ -8,9 +8,12 @@
 - **Dashboard** - Overview of courses, assignments, and announcements
 - **Course Management** - View enrolled courses and timetables
 - **Assignment System** - Submit and track assignments with grading
-- **QR Attendance** - Generate and scan QR codes for attendance
+- **QR & Code Attendance** - Generate QR codes and secure session codes for attendance marking
 - **Room Booking** - Reserve campus spaces and equipment
 - **Announcements** - Stay updated with campus news
+- **AI Chatbot Integration** - Intelligent campus assistance powered by Google Gemini API
+- **Academic Module** - Manage student marks, grades, and CGPA with MySQL backend support
+- **Library Module** - Comprehensive book borrowing, returning, and directory workflows
 
 ## Quick Start
 

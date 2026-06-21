@@ -7,7 +7,7 @@
     "role": "student",
     "department": "Computer Science",
     "created_at": "2026-01-31T11:49:04.839120",
-    "last_login": "2026-01-31T11:53:39.415646",
+    "last_login": "2026-04-16T00:51:27.162708",
     "student_id": "STU50249985",
     "semester": 1,
     "enrolled_courses": []
@@ -20,7 +20,7 @@
     "role": "faculty",
     "department": "Computer Science",
     "created_at": "2026-01-31T11:49:05.170641",
-    "last_login": "2026-01-31T14:06:03.470203",
+    "last_login": "2026-04-16T00:51:39.493452",
     "faculty_id": "FAC87549964",
     "designation": "",
     "assigned_courses": []
@@ -33,7 +33,7 @@
     "role": "admin",
     "department": "IT",
     "created_at": "2026-01-31T11:49:05.501264",
-    "last_login": "2026-01-31T14:26:41.908484",
+    "last_login": "2026-04-16T01:05:01.380093",
     "admin_id": "ADM27DA59F7",
     "permissions": [
       "all"

@@ -18,7 +18,7 @@ attendance_bp = Blueprint('attendance', __name__)
 
 @attendance_bp.route('/generate-qr', methods=['POST'])
 @token_required
-@role_required('faculty')
+@role_required('faculty', 'admin')
 def generate_qr(user):
     data = request.get_json()
     course_id = data.get('course_id')

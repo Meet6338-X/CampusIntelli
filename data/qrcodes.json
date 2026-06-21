@@ -8,5 +8,45 @@
     "generated_at": "2026-01-31T11:52:49.685032",
     "expires_at": "2026-01-31T11:57:49.685032",
     "is_valid": true
+  },
+  {
+    "id": "44828bd6-2be2-4578-8ec2-90fed1fc77b1",
+    "course_id": "course-cs201",
+    "lecture_id": "5751088e-9cfd-4f71-92cb-d9412c99d50e",
+    "faculty_id": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "code_data": "696610bb32484f43",
+    "generated_at": "2026-04-16T00:53:12.307989",
+    "expires_at": "2026-04-16T00:58:12.307989",
+    "is_valid": true
+  },
+  {
+    "id": "a510c7e0-1eb4-4e7b-9647-164244cd62de",
+    "course_id": "course-cs201",
+    "lecture_id": "e0edc1b8-65af-409b-9583-884e7af5af70",
+    "faculty_id": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "code_data": "e6eb8256ffc5460a",
+    "generated_at": "2026-04-16T00:55:03.775362",
+    "expires_at": "2026-04-16T01:00:03.775362",
+    "is_valid": true
+  },
+  {
+    "id": "33efaa35-8678-44a5-a41b-6261d258900d",
+    "course_id": "course-cs201",
+    "lecture_id": "8b54678a-4e89-4638-9987-2f1ebb9dbeb6",
+    "faculty_id": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "code_data": "0b6cb7c1c4374b43",
+    "generated_at": "2026-04-16T00:55:04.468947",
+    "expires_at": "2026-04-16T01:00:04.468947",
+    "is_valid": true
+  },
+  {
+    "id": "f62580d3-8298-4198-bca9-fd2f04d8af68",
+    "course_id": "course-cs101",
+    "lecture_id": "679ae981-1248-4c32-86c6-dc86072a1448",
+    "faculty_id": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "code_data": "4a7f2f09fa0b7f3d",
+    "generated_at": "2026-04-16T00:55:13.200996",
+    "expires_at": "2026-04-16T01:00:13.200996",
+    "is_valid": true
   }
 ]

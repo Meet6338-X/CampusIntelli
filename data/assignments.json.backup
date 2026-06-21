@@ -1,0 +1,35 @@
+[
+  {
+    "id": "dc2e223d-1838-49c4-88a3-034d1526e4f4",
+    "course_id": "course-cs201",
+    "title": "Binary Search Tree Implementation",
+    "description": "Implement a complete binary search tree with insert, delete, and search operations. Include AVL balancing.",
+    "due_date": "2026-04-23T00:32:13.464039",
+    "max_marks": 100,
+    "created_by": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "created_at": "2026-04-16T00:32:13.464039",
+    "is_active": true
+  },
+  {
+    "id": "91c429dc-8be2-43b5-a191-e3b15f157d82",
+    "course_id": "course-cs301",
+    "title": "SQL Query Optimization Assignment",
+    "description": "Write and optimize complex SQL queries on the provided university database schema. Include execution plans.",
+    "due_date": "2026-04-21T00:32:13.464039",
+    "max_marks": 50,
+    "created_by": "",
+    "created_at": "2026-04-16T00:32:13.464039",
+    "is_active": true
+  },
+  {
+    "id": "19602b0c-77fa-4756-9873-84a60aed9130",
+    "course_id": "course-cs401",
+    "title": "Neural Network from Scratch",
+    "description": "Build a feedforward neural network using only NumPy. Train it on the MNIST dataset.",
+    "due_date": "2026-04-30T00:32:13.464039",
+    "max_marks": 100,
+    "created_by": "87549964-eb30-40df-b0ea-f615e836ff54",
+    "created_at": "2026-04-16T00:32:13.464039",
+    "is_active": true
+  }
+]

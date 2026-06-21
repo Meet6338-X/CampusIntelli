@@ -279,8 +279,158 @@ def init_sample_data():
              'description': 'Calculus, linear algebra, and differential equations.'},
         ]
         
+        course_ids = {}
         for c in courses_data:
             course = Course(**c)
-            storage.create('courses', course.to_dict())
+            saved = storage.create('courses', course.to_dict())
+            course_ids[c['code']] = saved['id']
         
         print("[OK] Sample data created: 8 faculty, 3 students, 1 admin, 9 courses")
+    else:
+        # Build course_ids and faculty_ids maps from existing data
+        all_courses = storage.get_all('courses')
+        all_users = storage.get_all('users')
+        course_ids = {c.get('code'): c['id'] for c in all_courses}
+        faculty_ids = {u.get('email'): u['id'] for u in all_users if u.get('role') == 'faculty'}
+    
+    # Seed timetable slots if none exist
+    if not storage.get_all('timetable_slots'):
+        import uuid
+        timetable_data = [
+            # Monday
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS201', ''), 'day_of_week': 0, 'start_time': '09:00', 'end_time': '10:30', 'room': 'LH-101', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS301', ''), 'day_of_week': 0, 'start_time': '11:00', 'end_time': '12:30', 'room': 'LH-201', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('rajesh.kumar@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('MA201', ''), 'day_of_week': 0, 'start_time': '14:00', 'end_time': '15:30', 'room': 'LH-301', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('vikram.rao@campus.edu', '')},
+            # Tuesday
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS401', ''), 'day_of_week': 1, 'start_time': '09:00', 'end_time': '10:30', 'room': 'LH-101', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS302', ''), 'day_of_week': 1, 'start_time': '11:00', 'end_time': '12:30', 'room': 'Lab-A', 'slot_type': 'lab', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('priya.sharma@campus.edu', '')},
+            # Wednesday
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS201', ''), 'day_of_week': 2, 'start_time': '09:00', 'end_time': '10:30', 'room': 'LH-101', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS301', ''), 'day_of_week': 2, 'start_time': '11:00', 'end_time': '12:30', 'room': 'LH-201', 'slot_type': 'tutorial', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('rajesh.kumar@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS401', ''), 'day_of_week': 2, 'start_time': '14:00', 'end_time': '15:30', 'room': 'Lab-B', 'slot_type': 'lab', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+            # Thursday
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS302', ''), 'day_of_week': 3, 'start_time': '09:00', 'end_time': '10:30', 'room': 'LH-102', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('priya.sharma@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('MA201', ''), 'day_of_week': 3, 'start_time': '11:00', 'end_time': '12:30', 'room': 'LH-301', 'slot_type': 'tutorial', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('vikram.rao@campus.edu', '')},
+            # Friday
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS401', ''), 'day_of_week': 4, 'start_time': '09:00', 'end_time': '10:30', 'room': 'LH-101', 'slot_type': 'lecture', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+            {'id': str(uuid.uuid4()), 'course_id': course_ids.get('CS201', ''), 'day_of_week': 4, 'start_time': '11:00', 'end_time': '12:30', 'room': 'Lab-A', 'slot_type': 'lab', 'section': 'A', 'semester': '6', 'is_active': True, 'instructor_id': faculty_ids.get('faculty@campus.edu', '')},
+        ]
+        for slot in timetable_data:
+            if slot['course_id']:  # Only add if course exists
+                storage.create('timetable_slots', slot)
+        print(f"[OK] Timetable seeded: {len([s for s in timetable_data if s['course_id']])} slots")
+    
+    # Seed assignments if none exist
+    if not storage.get_all('assignments'):
+        import uuid
+        from datetime import datetime, timedelta
+        now = datetime.now()
+        assignments_data = [
+            {
+                'id': str(uuid.uuid4()),
+                'course_id': course_ids.get('CS201', ''),
+                'title': 'Binary Search Tree Implementation',
+                'description': 'Implement a complete binary search tree with insert, delete, and search operations. Include AVL balancing.',
+                'due_date': (now + timedelta(days=7)).isoformat(),
+                'max_marks': 100,
+                'created_by': faculty_ids.get('faculty@campus.edu', ''),
+                'created_at': now.isoformat(),
+                'is_active': True
+            },
+            {
+                'id': str(uuid.uuid4()),
+                'course_id': course_ids.get('CS301', ''),
+                'title': 'SQL Query Optimization Assignment',
+                'description': 'Write and optimize complex SQL queries on the provided university database schema. Include execution plans.',
+                'due_date': (now + timedelta(days=5)).isoformat(),
+                'max_marks': 50,
+                'created_by': faculty_ids.get('rajesh.kumar@campus.edu', ''),
+                'created_at': now.isoformat(),
+                'is_active': True
+            },
+            {
+                'id': str(uuid.uuid4()),
+                'course_id': course_ids.get('CS401', ''),
+                'title': 'Neural Network from Scratch',
+                'description': 'Build a feedforward neural network using only NumPy. Train it on the MNIST dataset.',
+                'due_date': (now + timedelta(days=14)).isoformat(),
+                'max_marks': 100,
+                'created_by': faculty_ids.get('faculty@campus.edu', ''),
+                'created_at': now.isoformat(),
+                'is_active': True
+            },
+            {
+                'id': str(uuid.uuid4()),
+                'course_id': course_ids.get('CS302', ''),
+                'title': 'Portfolio Website Project',
+                'description': 'Build a responsive personal portfolio using HTML, CSS, and JavaScript. Deploy to GitHub Pages.',
+                'due_date': (now + timedelta(days=10)).isoformat(),
+                'max_marks': 100,
+                'created_by': faculty_ids.get('priya.sharma@campus.edu', ''),
+                'created_at': now.isoformat(),
+                'is_active': True
+            },
+        ]
+        for a in assignments_data:
+            if a['course_id']:
+                storage.create('assignments', a)
+        print(f"[OK] Assignments seeded")
+    
+    # Seed events if none exist
+    if not storage.get_all('events'):
+        import uuid
+        from datetime import datetime, timedelta
+        now = datetime.now()
+        events_data = [
+            {
+                'id': str(uuid.uuid4()),
+                'title': 'Tech Fest 2026',
+                'description': 'Annual technology festival with hackathons, project showcases, coding competitions, and workshops.',
+                'event_type': 'cultural',
+                'start_date': (now + timedelta(days=20)).strftime('%Y-%m-%d'),
+                'end_date': (now + timedelta(days=22)).strftime('%Y-%m-%d'),
+                'start_time': '09:00',
+                'end_time': '18:00',
+                'location': 'Main Campus Grounds',
+                'is_public': True,
+                'is_holiday': False,
+                'created_by': 'system',
+                'organizer_id': 'system',
+                'created_at': now.isoformat()
+            },
+            {
+                'id': str(uuid.uuid4()),
+                'title': 'Campus Placement Drive - Google India',
+                'description': 'Google India campus recruitment drive. Eligible students: CSE/IT 7th & 8th semester with CGPA >= 7.5',
+                'event_type': 'academic',
+                'start_date': (now + timedelta(days=15)).strftime('%Y-%m-%d'),
+                'end_date': (now + timedelta(days=15)).strftime('%Y-%m-%d'),
+                'start_time': '10:00',
+                'end_time': '17:00',
+                'location': 'Seminar Hall, Block A',
+                'is_public': True,
+                'is_holiday': False,
+                'created_by': 'system',
+                'organizer_id': 'system',
+                'created_at': now.isoformat()
+            },
+            {
+                'id': str(uuid.uuid4()),
+                'title': 'Mid-Semester Examination',
+                'description': 'Mid-semester examinations for all departments. Check individual timetable for subject-wise schedule.',
+                'event_type': 'academic',
+                'start_date': (now + timedelta(days=30)).strftime('%Y-%m-%d'),
+                'end_date': (now + timedelta(days=37)).strftime('%Y-%m-%d'),
+                'start_time': '09:00',
+                'end_time': '12:00',
+                'location': 'Examination Halls',
+                'is_public': True,
+                'is_holiday': False,
+                'created_by': 'system',
+                'organizer_id': 'system',
+                'created_at': now.isoformat()
+            },
+        ]
+        for e in events_data:
+            storage.create('events', e)
+        print(f"[OK] Events seeded")
